@@ -1,0 +1,14 @@
+Educational Resorces:
+
+1. Java Swing Playlist (GUI)- https://youtube.com/playlist?list=PLjJmj2FyqToaShAsuiW57BFvAkgMpaaNk  (1-30 is enough)
+   Java Swing Documentation/PDF- https://www.cs.buap.mx/~ygalicia/Libros/JavaSwing.pdf
+
+2. Java JDBC (MySQL/Local Database) Playlist- https://youtube.com/playlist?list=PL0zysOflRCenjuvOwumYLG9TCsEQZrV2M
+   Java JDBC Online Blog- https://www.javatpoint.com/java-jdbc
+
+3. Connect Firebase with Java-
+		(i)  https://youtube.com/playlist?list=PLS1QulWo1RIYMQcf1y2bqQZbpXLzpKDUL (using Spring Boot Framework)
+		(ii) https://www.youtube.com/watch?v=ScsID2yPB8k (using REST API)
+
+
+4. Automating the Creation of PDF Invoice using Java Playlist- https://youtube.com/playlist?list=PLz3sH_KSH-y_hyudbNhHk3Egdsn9Zj5SJ
