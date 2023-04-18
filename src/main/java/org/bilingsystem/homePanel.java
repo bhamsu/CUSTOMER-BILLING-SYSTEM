@@ -52,6 +52,7 @@ public class homePanel extends JPanel {
         mainFrameCont.add(contentPane,"2");
         //setContentPane(contentPane);
         contentPane.setLayout(null);
+        contentPane.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 
         JLabel lblNewLabel = new JLabel("CUSTOMER BILLING SYSTEM");
         lblNewLabel.setForeground(new Color(0, 128, 255));
@@ -1075,7 +1076,7 @@ public class homePanel extends JPanel {
 
         String str = "";
         try {
-            File bill = new File(System.getProperty("user.dir")+ "\\src\\main\\java\\org\\bilingsystem\\" +"billno.txt");
+            File bill = new File(System.getProperty("user.dir") + "\\src\\main\\java\\org\\bilingsystem\\" + "billno.txt");
             Scanner data = new Scanner(bill);
             str = Integer.toString(Integer.parseInt(data.nextLine())+1);
             textField_21.setText(str);

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "customer-billing-system-384019",
+  "private_key_id": "fda0d566c57e2a274913451865444263a85d183c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDNMD5anL8odW4I\n03CCUcr1ZlVE3nc+kAJnLOAaQOJEwdjSiYenFBJ36X798t0kj9zYwwpMwmJR2Psm\n2CUemcw4amNY+lyvsGDaQ4PHfMCK7k57t+kI7yQ3aYx6kLwGhwPfaKYriJx6WQkD\nWSwjGqV/AGzkcT8bMxUR5ZJBab1mgPYDMnlFQ9ogRRzP3hTzt7Fn/lYPk9MNThI0\nQpi6XswRm27GIxQva6kARuFDMyMRwSn7M/nOCy2NcGb8pithGqWxXLYh4jzcuotI\naYHvLUAnPpOTyQpgMuG5RFp6ribSKST1um0uCmnPDFhtNSimWaxT52g7oih2Vl4S\nfMhXDeL7AgMBAAECggEACDjAptzVBAgAirX+MhqY6VBaZlILsSQQFJZFvIeRCXRC\n/dyo5Nb3Dnr6ra5Hkil5je3ywbSgP+tT1PCgPCOpfTE2HeCaSiflGZnO8/VZubdm\nyapK2iLK7rV5/YdDIXfTfeYxklj8/CIJLGssS5PLwdUAh/7JqotXcsoiHCDih/Lc\nfsgdQ7q7U1+WOycvbFG1CLarGueYgJU1YuYHdWTgV2ClWcnlTylb0zNwN8qoOZ0y\nn9hy2iWZ3ilutmhpAbVTFe3dXF1zh5OvJFq+rJcAs4N1NUz3ysgCs46oAG0hQHQs\nWOQcUAWKrWUOuatIDpzTRsdIbpj52TZdTZatM/RzYQKBgQD2GmoK42AWFVTBBBD6\nBtYyMH4NBaOIFUmKUxcxQruSzzFF8s72SZFyiJfG2X/eOiT3E9O1pD1hkI85kpRG\n1U6QWRMlEvkbHCJ0x9/5yPcsJ7iOwGSbc2HXPmNEHLVX8lTjua6i/boApL4CeOng\nSIPx7jh4s5E8quJ+OlfLcHQNswKBgQDVcJ6zzuFSwMKUEj5UGc87hSEn71qcc0Tf\n/0CfF0nBt01taevk3NGJqqTThIVy1FoUYuJwwQ8ciPBM0hOCdoNH6my7Jmxb8vlP\nPE6+nJdwXXwzJ8xxSgh2u3phIZ1loRqP5mh60lnld4qSIVUO3Bdx59754HJdQDiN\nYAr6scwBmQKBgQDl8spQgCGAoM+/RYBjTc4HuT2eBz3EYjeDkp2h/ntq8kNU20m7\n4AOR48UFHKaYSvXNEu6G0v4zUjIxFh+Li7VLtJ7pzi+JwCEFwtgo+TjSPg74+xVG\nFmo+BuITe0uJ8DiXSyC81JxeC5AqmTXVxYvbmr2TMh0rdXQJg5QS13DodwKBgEZ0\nO169HnGTgWchMoPOVTKfeldVUgKspgKOnkUlicow+JTyTtSn817O/kN3zhkecXGj\nRn3TrGpN5YxmF9yLxD/76NJKF6Cubo8yKAgRZofHxBSawYhv2KVgsz/Wub7vU/ZG\nJxzLzLLLJ+meqRYTnoWR9W9kIDwZ09EO7/Daua2ZAoGBAJxdo8128S+gYiNB0G1C\neH4Zw4VY7IczLSnYaPmjf6EHCoQ8jcKOLt2XtKozneA0PMCMxqq3s8IPv3IEBFUr\nKFA+zwAbyjwWqjmoZV7lVPBySA+xcKDVOVjSp4TovfIO9+x0Ukj+lX1AZk/RALQM\nvdemT2kmzonAKlnzfM7AnX/O\n-----END PRIVATE KEY-----\n",
+  "client_email": "java-intellij@customer-billing-system-384019.iam.gserviceaccount.com",
+  "client_id": "108640810986810915098",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/java-intellij%40customer-billing-system-384019.iam.gserviceaccount.com"
+}

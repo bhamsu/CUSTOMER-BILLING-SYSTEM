@@ -69,8 +69,7 @@ public class loginPanel extends JPanel {
 
         // Setting all the Buttons in the Frame
         // Submit Button...
-        ImageIcon submitIcon = new ImageIcon("C:\\Users\\SUBHAM DAS\\OneDrive\\Desktop\\newProj\\Management System\\CustomerBillingSystem\\resources\\submit icon.png");
-        // ImageIcon submitIcon = new ImageIcon("./../../../../resources/submit icon.png");
+        ImageIcon submitIcon = new ImageIcon(System.getProperty("user.dir") + "\\resources\\submit icon.png");
         Image img = submitIcon.getImage();
         Image newImg = img.getScaledInstance(122, 52,  java.awt.Image.SCALE_SMOOTH); // resizing the image icon
         submitIcon = new ImageIcon(newImg);
