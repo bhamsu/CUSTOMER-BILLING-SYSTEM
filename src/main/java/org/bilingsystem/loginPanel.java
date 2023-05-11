@@ -1,3 +1,7 @@
+/* This class is for the Login Page. Each and every element of the design is coded here, except the
+*  authentication part. For that, we have written a dedicated class.
+*  -by Daipayan Saha */
+
 package org.bilingsystem;
 
 import javax.swing.*;
@@ -8,15 +12,9 @@ import java.awt.event.ActionListener;
 
 public class loginPanel extends JPanel {
 
-    JLabel welcomeLabel;
-    JLabel useridLabel;
-    JLabel passwordLabel;
-    JTextField useridText;
-    JPasswordField passwordText;
-    JButton submitBtn;
-
     public loginPanel(Container mainFrameCont, CardLayout layout) {
-        initComponents();
+
+        // Initializing the main window specifications
         setSize(Toolkit.getDefaultToolkit().getScreenSize());   // setSize(1920,1080);
         setLocation(0,0);
         setBackground(Color.WHITE);
@@ -25,21 +23,21 @@ public class loginPanel extends JPanel {
 
         // Setting all the Labels in the Frame
         // Welcome Label...
-        welcomeLabel = new JLabel("Hi, Welcome...");
+        JLabel welcomeLabel = new JLabel("Hi, Welcome...");
         welcomeLabel.setBounds(440,180,1000,64);
         welcomeLabel.setBackground(Color.BLACK);
         welcomeLabel.setFont(new Font("Segoe UI", Font.PLAIN, 64));
         this.add(welcomeLabel);
 
         // UserId Label...
-        useridLabel = new JLabel("UserId");
+        JLabel useridLabel = new JLabel("UserId");
         useridLabel.setBounds(500,300, 200,32);
         useridLabel.setBackground(Color.BLACK);
         useridLabel.setFont((new Font("Segoe UI", Font.PLAIN, 28)));
         this.add(useridLabel);
 
         // Password Label...
-        passwordLabel = new JLabel("Password");
+        JLabel passwordLabel = new JLabel("Password");
         passwordLabel.setBounds(449,350, 200,32);
         passwordLabel.setBackground(Color.BLACK);
         passwordLabel.setFont((new Font("Segoe UI", Font.PLAIN, 32)));
@@ -48,7 +46,7 @@ public class loginPanel extends JPanel {
 
         // Setting all the Text & Password Fields in the Frame
         // User Id Text Filed...
-        useridText = new JTextField();
+        JTextField useridText = new JTextField();
         useridText.setBounds(600,300, 200,32);
         useridText.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         useridText.setForeground(Color.GRAY);
@@ -58,13 +56,32 @@ public class loginPanel extends JPanel {
         this.add(useridText);
 
         // Password Field...
-        passwordText = new JPasswordField();
+        JPasswordField passwordText = new JPasswordField();
         passwordText.setBounds(600,350, 200,32);
-        passwordText.setFont(new Font("Segoe UI", Font.PLAIN, 30));
+        passwordText.setFont(new Font("Segoe UI", Font.PLAIN, 25));
         passwordText.setForeground(Color.GRAY);
         passwordText.setBackground(Color.WHITE);
+        passwordText.setEchoChar('*');
         passwordText.setBorder(BorderFactory.createLineBorder(Color.black));
         this.add(passwordText);
+
+        // Show Password Check button
+        JCheckBox chckbxNewCheckBox = new JCheckBox("Show Password");
+        chckbxNewCheckBox.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        chckbxNewCheckBox.setBackground(Color.WHITE);
+        chckbxNewCheckBox.setBounds(595, 400, 120, 15);
+        this.add(chckbxNewCheckBox);
+        chckbxNewCheckBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(chckbxNewCheckBox.isSelected()) {
+                    // Show Password
+                    passwordText.setEchoChar((char)0);
+                } else {
+                    // Replace Password with `*`
+                    passwordText.setEchoChar('*');
+                }
+            }
+        });
 
 
         // Setting all the Buttons in the Frame
@@ -73,7 +90,7 @@ public class loginPanel extends JPanel {
         Image img = submitIcon.getImage();
         Image newImg = img.getScaledInstance(122, 52,  java.awt.Image.SCALE_SMOOTH); // resizing the image icon
         submitIcon = new ImageIcon(newImg);
-        submitBtn = new JButton(submitIcon);
+        JButton submitBtn = new JButton(submitIcon);
         submitBtn.setBounds(570,430,120,50);
         submitBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.add(submitBtn);
@@ -82,41 +99,10 @@ public class loginPanel extends JPanel {
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                homePanel home = new homePanel(mainFrameCont, layout);
-                authentication auth = new authentication(useridText.getText(), passwordText.getText());
+                // Calling the authentication class to match the id & password for login.
+                authentication auth = new authentication(mainFrameCont, Integer.parseInt(useridText.getText()), passwordText.getText());
                 layout.show(mainFrameCont,"2");   // layout.next(mainFrameCont);
             }
         });
-
     }
-
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setText("Hi, Welcome...");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(96, 96, 96)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                .addGap(88, 88, 88))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(222, Short.MAX_VALUE))
-        );
-    }
-
-
-    // Variables declaration - do not modify
-    private javax.swing.JLabel jLabel1;
-    // End of variables declaration
 }

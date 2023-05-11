@@ -1,37 +1,59 @@
+/* In this class we match the given id & password arguments with our Cloud Database stored in
+*  Google Cloud Storage(GCS). If they match, the login is successful and the class move help into
+*  the next frame that is Homepage/Home Frame.
+*  -by Subham Das */
 package org.bilingsystem;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import java.awt.*;
+import java.sql.*;
 
 public class authentication {
 
-    // private static final String INSTANCE_CONNECTION_NAME = System.getenv("INSTANCE_CONNECTION_NAME");
-    // private static final String USER = System.getenv("GCS_DB_USER");
-    // private static final String PASSWORD = System.getenv("GCS_USER_PASSWORD");
-    // private static final String DB = System.getenv("GCS_DB");
-    // public static final String CREDENTIAL_STRING = "jdbc:mysql:///" + DB + "?cloudSqlInstance=" + INSTANCE_CONNECTION_NAME + "&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=" + USER + "&password=" + PASSWORD;
+    // The variables are stored in my System Variables, so that the crucial information doesn't get leaked.
+    // The variable declared here store the GCS CloudSQL connection information for example user, password, connection ip etc.
+    // System.getenv() function used to get the System/Environment Variables of your Local machine.
+    private static final String INSTANCE_CONNECTION_NAME = System.getenv("INSTANCE_CONNECTION_NAME");
+    private static final String USER = "root"; // System.getenv("GCS_DB_USER");
+    private static final String PASSWORD = System.getenv("GCS_USER_PASSWORD");
+    private static final String DB = "company"; // System.getenv("GCS_DB");
 
-    public static final String CREDENTIAL_STRING = "jdbc:mysql:///company?cloudSqlInstance=customer-billing-system-384019:asia-south1:billing-system&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=alpha-romeo@Ramdev69";
+    // The Connection link
+    public static final String CREDENTIAL_STRING = "jdbc:mysql:///" + DB + "?cloudSqlInstance=" + INSTANCE_CONNECTION_NAME + "&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=" + USER + "&password=" + PASSWORD;
+
     static Connection connection = null;
 
-    public authentication(String username, String password){
-        // System.out.println(PASSWORD);
-        // Get a new datasource from the method we defined before
+    public authentication(Container mainFrameCont, int username, String password){
 
         try {
+            // Connecting with Google Cloud Server
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(CREDENTIAL_STRING);
+            System.out.println("Google CloudSQL connection Successfully established!");
 
-            /*PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user;");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("name"));
-            }*/
+            // Running the CloudSQL to execute our Query, specifically we are checking the given id & password is in the database or not
+            PreparedStatement preparedStatement = connection.prepareStatement(String.format("SELECT name, NOB FROM employee WHERE id=%d AND password='%s'", username, password));
+            ResultSet resultSet = preparedStatement.executeQuery(); // Execution of the Query
+
+            resultSet.next();
+            if (resultSet.getString("name") != null) {
+                // Successfully Logged In
+                System.out.println(String.format("Successfully Logged in by %s.",resultSet.getString("name")));
+                JOptionPane.showMessageDialog(null, "Login Successful!!");
+                homePanel home = new homePanel(mainFrameCont, connection, username, resultSet.getInt("NOB"));
+            } else {
+                // Login Failed
+                JOptionPane.showMessageDialog(mainFrameCont, "Error: Failed Login!!");
+                System.out.println("Login Failed.");
+            }
+
         } catch (Exception e) {
-            // TODO:
+            // Prints any type of Error
             e.printStackTrace();
+            // Or maybe Login Failed for any other reason.
+            System.out.println("Login Failed.");
+            JOptionPane.showMessageDialog(mainFrameCont, "Error: Failed Login!!");
+
         }
     }
 

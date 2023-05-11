@@ -1,3 +1,4 @@
+// -by Subham Das
 package org.bilingsystem;
 
 import javax.swing.*;
@@ -6,7 +7,6 @@ import java.awt.*;
 public class mainFrame extends JFrame {
 
     Container mainFrameCont;
-
     public mainFrame() {
         initComponents();
         setTitle("Customer Billing System");
@@ -43,12 +43,10 @@ public class mainFrame extends JFrame {
 
     public static void main(String args[]) {
 
-        /* Create and display the form */
+        // Create and display the form
         java.awt.EventQueue.invokeLater(() -> {
             new mainFrame().setVisible(true);
         });
     }
 
-    // Variables declaration - do not modify
-    // End of variables declaration
 }

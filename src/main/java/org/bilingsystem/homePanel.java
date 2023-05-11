@@ -1,3 +1,6 @@
+/* In this class, all the UI of Homepage/Home Frame is designed & coded. Few buttons in the class calls
+*  other Classes like for storing the bill details both in local as well cloud database.
+*  -by Soumi Roy */
 package org.bilingsystem;
 
 import javax.swing.*;
@@ -6,7 +9,11 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.*;
 import java.time.LocalDateTime;
@@ -40,7 +47,7 @@ public class homePanel extends JPanel {
     private JTextField textField_22;
     private JTextField textField_23;
 
-    public homePanel(Container mainFrameCont,CardLayout layout) {
+    public homePanel(Container mainFrameCont, Connection connection, int id, int NOB) {
 
         JPanel contentPane = new JPanel();
         contentPane.setForeground(new Color(0, 128, 255));
@@ -132,7 +139,18 @@ public class homePanel extends JPanel {
         panel.add(textField_3);
         textField_3.setColumns(10);
 
-        String s[]= {"SELECT","French Fries","Paneer Pakoda","Paneer Tikka","Paneer 65","Chicken Reshmi Kebab","Chicken Tangri Kebab","Chicken Hariyali Kebab","Chicken Tikka Kebab","Drums of Heaven","Chicken 65","Fish Finger","Fish Fry","Fish Kabiraji"};
+        String s[]= {"SELECT",
+                "French Fries      ",
+                "Paneer Pakoda     ",
+                "Paneer Tikka      ",
+                "Paneer 65         ",
+                "Chicken Kebab     ",
+                "Drums of Heaven   ",
+                "Chicken 65        ",
+                "Fish Finger       ",
+                "Fish Fry          ",
+                "Fish Kabiraji     "};
+
         JComboBox comboBox = new JComboBox(s);
         comboBox.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox.setBounds(132, 63, 194, 22);
@@ -143,7 +161,12 @@ public class homePanel extends JPanel {
         lblNewLabel_6_1.setBounds(10, 90, 102, 22);
         panel.add(lblNewLabel_6_1);
 
-        String burg[]= {"SELECT","Veg Patty Burger","Paneer Tikka Burger","Grilled Chicken Burger","BBQ Ham Burger"};
+        String burg[]= {"SELECT",
+                "Veg Patty Burger  ",
+                "Paneer Tikka Burge",
+                "Grilled Chicken Bu",
+                "BBQ Ham Burger    "};
+
         JComboBox comboBox_1 = new JComboBox(burg);
         comboBox_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_1.setBounds(132, 90, 194, 22);
@@ -160,7 +183,15 @@ public class homePanel extends JPanel {
         lblNewLabel_6_2.setBounds(10, 121, 102, 14);
         panel.add(lblNewLabel_6_2);
 
-        String p[]= {"SELECT","Corn Cheese Pizza","Malai Paneer Pizza","Farmhouse","Chicken Fiesta","Barbecue Chicken","Chicken Dominator","Chicken Maximus"};
+        String p[]= {"SELECT",
+                "Corn Cheese Pizza ",
+                "Malai Paneer Pizza",
+                "Farmhouse         ",
+                "Chicken Fiesta    ",
+                "Barbecue Chicken  ",
+                "Chicken Dominator ",
+                "Chicken Maximus   "};
+
         JComboBox comboBox_2 = new JComboBox(p);
         comboBox_2.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_2.setBounds(132, 117, 194, 22);
@@ -177,7 +208,15 @@ public class homePanel extends JPanel {
         lblNewLabel_6_3.setBounds(10, 146, 128, 14);
         panel.add(lblNewLabel_6_3);
 
-        String pas[]= {"SELECT","Veggie Pasta","Brown Pasta","Spicy Arabiatta","White Sauce Pasta","Chicken Sausage Pasta","Mexican Pasta","Chicken Alfredo Pasta"};
+        String pas[]= {"SELECT",
+                "Veggie Pasta      ",
+                "Brown Pasta       ",
+                "Spicy Arabiatta   ",
+                "White Sauce Pasta ",
+                "Chicken Sausage Pa",
+                "Mexican Pasta     ",
+                "Chicken Alfredo Pa"};
+
         JComboBox comboBox_3 = new JComboBox(pas);
         comboBox_3.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_3.setBounds(132, 142, 194, 22);
@@ -194,7 +233,16 @@ public class homePanel extends JPanel {
         lblNewLabel_6_4.setBounds(10, 175, 102, 14);
         panel.add(lblNewLabel_6_4);
 
-        String sand[]= {"SELECT","Tomato & Cheese Sandwich","Club Sandwich","Corn Cheese Sandwich","Chicken Sandwich","Mutton Sandwich","Ham Sabdwich","Grillen Chicken Panini","Bacon Panini","Chicken Salami Sandwich"};
+        String sand[]= {"SELECT",
+                "Cheese Sandwich   ",
+                "Club Sandwich     ",
+                "Corn Cheese Sandwi",
+                "Chicken Sandwich  ",
+                "Mutton Sandwich   ",
+                "Ham Sandwich      ",
+                "Grilled Chicken Pa",
+                "Bacon Panini      "};
+
         JComboBox comboBox_4 = new JComboBox(sand);
         comboBox_4.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_4.setBounds(132, 171, 194, 22);
@@ -211,7 +259,13 @@ public class homePanel extends JPanel {
         lblNewLabel_6_5.setBounds(10, 200, 102, 22);
         panel.add(lblNewLabel_6_5);
 
-        String b[]= {"SELECT","Chicken Biriyani","Chicken Special Biriyani","Mutton Biriyani","Mutton Special Biriyani","Paneer Tikka Biriyani"};
+        String b[]= {"SELECT",
+                "Chicken Biriyani  ",
+                "Chicken Spl Biriya",
+                "Mutton Biriyani   ",
+                "Mutton Spl Biriyan",
+                "Paneer Tikka Biriy"};
+
         JComboBox comboBox_5 = new JComboBox(b);
         comboBox_5.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_5.setBounds(132, 200, 194, 22);
@@ -228,7 +282,17 @@ public class homePanel extends JPanel {
         lblNewLabel_6_6.setBounds(10, 231, 102, 18);
         panel.add(lblNewLabel_6_6);
 
-        String stap[]= {"SELECT","Steamed Rice","Jeera Rice","Kashmiri Pulao","Roti","Plain Naan","Butter Naan","Laccha Paratha","Masala Kulcha","Amritsari Kulcha"};
+        String stap[]= {"SELECT",
+                "Steamed Rice      ",
+                "Jeera Rice        ",
+                "Kashmiri Pulao    ",
+                "Rotti             ",
+                "Plain Naan        ",
+                "Butter Naan       ",
+                "Laccha Paratha    ",
+                "Masala Kulcha     ",
+                "Amritsari Kulcha  "};
+
         JComboBox comboBox_6 = new JComboBox(stap);
         comboBox_6.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_6.setBounds(132, 229, 194, 22);
@@ -245,7 +309,18 @@ public class homePanel extends JPanel {
         lblNewLabel_6_7.setBounds(10, 263, 115, 14);
         panel.add(lblNewLabel_6_7);
 
-        String c[]= {"SELECT","Chilli Paneer","Shahi Paneer","Paneer Butter Masala","Chilli Chichen","Chicken Manchurian","Butter Chicken","Chichen Tikka Masala","Mutton Kasha","Mutton Dopiaza","Mutton Dakbunglow"};
+        String c[]= {"SELECT",
+                "Chilli Paneer     ",
+                "Shahi Paneer      ",
+                "Paneer Butter Masa",
+                "Chilli Chichen    ",
+                "Chicken Manchurian",
+                "Butter Chicken    ",
+                "Chichen Tikka Masa",
+                "Mutton Kasha      ",
+                "Mutton Dopiaza    ",
+                "Mutton Dakbunglow "};
+
         JComboBox comboBox_7 = new JComboBox(c);
         comboBox_7.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_7.setBounds(132, 259, 194, 22);
@@ -262,7 +337,14 @@ public class homePanel extends JPanel {
         lblNewLabel_6_7_1.setBounds(10, 292, 102, 14);
         panel.add(lblNewLabel_6_7_1);
 
-        String des[]= {"SELECT","Sizzling Brownie","Wonder Waffle","Chocolate Pudding","Caramel Pudding","Ecstasy Sundae","Chocolate Mouse"};
+        String des[]= {"SELECT",
+                "Sizzling Brownie  ",
+                "Wonder Waffle     ",
+                "Chocolate Pudding ",
+                "Caramel Pudding   ",
+                "Ecstasy Sundae    ",
+                "Chocolate Mouse   "};
+
         JComboBox comboBox_7_1 = new JComboBox(des);
         comboBox_7_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_7_1.setBounds(132, 288, 194, 22);
@@ -299,7 +381,17 @@ public class homePanel extends JPanel {
         lblNewLabel_6_8.setBounds(10, 70, 102, 14);
         panel_1.add(lblNewLabel_6_8);
 
-        String cof[]= {"SELECT","Espresso","Americano","Latte","Cupaccino","Irish Coffee","Dalgona","Freddo","Affogato","Mocha"};
+        String cof[]= {"SELECT",
+                "Espresso          ",
+                "Americano         ",
+                "Latte             ",
+                "Cupaccino         ",
+                "Irish Coffee      ",
+                "Dalgona           ",
+                "Freddo            ",
+                "Affogato          ",
+                "Mocha             "};
+
         JComboBox comboBox_8 = new JComboBox(cof);
         comboBox_8.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_8.setBounds(122, 66, 194, 22);
@@ -316,7 +408,11 @@ public class homePanel extends JPanel {
         lblNewLabel_6_8_1.setBounds(10, 99, 102, 14);
         panel_1.add(lblNewLabel_6_8_1);
 
-        String tea[]= {"SELECT","Green Tea","Black Tea","Ice Tea"};
+        String tea[]= {"SELECT",
+                "Green Tea         ",
+                "Black Tea         ",
+                "Ice Tea           "};
+
         JComboBox comboBox_8_1 = new JComboBox(tea);
         comboBox_8_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_8_1.setBounds(122, 95, 194, 22);
@@ -333,7 +429,12 @@ public class homePanel extends JPanel {
         lblNewLabel_6_8_2.setBounds(10, 128, 102, 14);
         panel_1.add(lblNewLabel_6_8_2);
 
-        String sha[]= {"SELECT","Chocolate Milkshake","Banana Milkshake","Strawberry Milkshake","Banana Milkshake","Mango Milkshake"};
+        String sha[]= {"SELECT",
+                "Chocolate Milkshak",
+                "Banana Milkshake  ",
+                "Strawberry Milksha",
+                "Banana Milkshake  ",
+                "Mango Milkshake   "};
         JComboBox comboBox_8_2 = new JComboBox(sha);
         comboBox_8_2.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_8_2.setBounds(122, 124, 194, 22);
@@ -350,7 +451,13 @@ public class homePanel extends JPanel {
         lblNewLabel_6_8_3.setBounds(10, 157, 102, 21);
         panel_1.add(lblNewLabel_6_8_3);
 
-        String be[]= {"SELECT","Mineral Water","Aerated Soft Drinks","Fresh Lime","Ginger Ale","Red Bull"};
+        String be[]= {"SELECT",
+                "Mineral Water     ",
+                "Aerated Soft Drink",
+                "Fresh Lime        ",
+                "Ginger Ale        ",
+                "Red Bull          "};
+
         JComboBox comboBox_8_3 = new JComboBox(be);
         comboBox_8_3.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_8_3.setBounds(122, 153, 194, 22);
@@ -367,7 +474,15 @@ public class homePanel extends JPanel {
         lblNewLabel_6_8_3_1.setBounds(10, 186, 102, 14);
         panel_1.add(lblNewLabel_6_8_3_1);
 
-        String moc[]= {"SELECT","Virgin Mojito","Watermelon Mojito","Blue Lagoon","Margarita","Pina Colada","Purple Rain","Delight Punch"};
+        String moc[]= {"SELECT",
+                "Virgin Mojito     ",
+                "Watermelon Mojito ",
+                "Blue Lagoon       ",
+                "Margarita         ",
+                "Pina Colada       ",
+                "Purple Rain       ",
+                "Delight Punch     "};
+
         JComboBox comboBox_8_3_1 = new JComboBox(moc);
         comboBox_8_3_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
         comboBox_8_3_1.setBounds(122, 182, 194, 22);
@@ -448,11 +563,17 @@ public class homePanel extends JPanel {
         textArea.setBounds(903, 139, 326, 495);
         contentPane.add(textArea);
 
+        String[] fooditem = new  String[13];
+        double[] costing = new double[13];
+        double[] quantity = new double[13];
+
         JButton btnNewButton = new JButton("Meal & Drinks Amount");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 double cost=0.0,cost1=0.0,cost2=0.0,cost3=0.0,cost4=0.0,cost5=0.0,cost6=0.0,cost7=0.0,cost8=0.0,cost9=0.0,cost10=0.0,cost11=0.0,cost12=0.0,cost13=0.0;
                 int qty,qty1,qty2,qty3,qty4,qty5,qty6,qty7,qty8,qty9,qty10,qty11,qty12,qty13;
+                int counter = 0;
+
                 //CODE FOR FOOD ITEMS
 
                 String item=(String)comboBox.getSelectedItem();
@@ -463,45 +584,40 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty=Integer.parseInt(textField_3.getText());
-                    if(item.equals("French Fries")){
+                    if(item.equals("French Fries      ")){
                         cost=80.0;
                     }
-                    else if(item.equals("Paneer Pakoda")){
+                    else if(item.equals("Paneer Pakoda     ")){
                         cost=120.0;
                     }
-                    else if(item.equals("Paneer Tikka")){
+                    else if(item.equals("Paneer Tikka      ")){
                         cost=60.0;
                     }
-                    else if(item.equals("Paneer 65")){
+                    else if(item.equals("Paneer 65         ")){
                         cost=170.0;
                     }
-                    else if(item.equals("Chicken Reshmi Kebab")){
+                    else if(item.equals("Chicken Kebab     ")){
                         cost=200.0;
                     }
-                    else if(item.equals("Chicken Tangri Kebab")){
-                        cost=200.0;
-                    }
-                    else if(item.equals("Chicken Hariyali Kebab")){
-                        cost=200.0;
-                    }
-                    else if(item.equals("Chicken Tikka Kebab")){
-                        cost=200.0;
-                    }
-                    else if(item.equals("Drums of Heaven")){
+                    else if(item.equals("Drums of Heaven   ")){
                         cost=250.0;
                     }
-                    else if(item.equals("Chicken 65")){
+                    else if(item.equals("Chicken 65        ")){
                         cost=230.0;
                     }
-                    else if(item.equals("Fish Finger")){
+                    else if(item.equals("Fish Finger       ")){
                         cost=80.0;
                     }
-                    else if(item.equals("Fish Fry")){
+                    else if(item.equals("Fish Fry          ")){
                         cost=70.0;
                     }
-                    else if(item.equals("Fish Kabiraji")){
+                    else if(item.equals("Fish Kabiraji     ")){
                         cost=90.0;
                     }
+                    fooditem[counter] = item;
+                    costing[counter] = cost;
+                    quantity[counter] = qty;
+                    counter++;
                 }
 
                 String item1=(String)comboBox_1.getSelectedItem();
@@ -513,18 +629,22 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty1=Integer.parseInt(textField_4.getText());
-                    if(item1.equals("Veg Patty Burger")){
+                    if(item1.equals("Veg Patty Burger  ")){
                         cost1=100.0;
                     }
-                    else if(item1.equals("Paneer Tikka Burger")){
+                    else if(item1.equals("Paneer Tikka Burge")){
                         cost1=150.0;
                     }
-                    else if(item1.equals("Grilled Chicken Burger")){
+                    else if(item1.equals("Grilled Chicken Bur")){
                         cost1=200.0;
                     }
-                    else if(item1.equals("BBQ Ham Burger")){
+                    else if(item1.equals("BBQ Ham Burger     ")){
                         cost1 = 250.0;
                     }
+                    fooditem[counter] = item1;
+                    costing[counter] = cost1;
+                    quantity[counter] = qty1;
+                    counter++;
                 }
 
                 String item2=(String)comboBox_2.getSelectedItem();
@@ -536,27 +656,31 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty2=Integer.parseInt(textField_5.getText());
-                    if(item2.equals("Corn Cheese Pizza")){
+                    if(item2.equals("Corn Cheese Pizza ")){
                         cost2=150.0;
                     }
                     else if(item2.equals("Malai Paneer Pizza")){
                         cost2=150.0;
                     }
-                    else if(item2.equals("Farmhouse")){
+                    else if(item2.equals("Farmhouse         ")){
                         cost2=160.0;
                     }
-                    else if(item2.equals("Chicken Fiesta")){
+                    else if(item2.equals("Chicken Fiesta    ")){
                         cost2 = 200.0;
                     }
-                    else if(item2.equals("Barbecue Chicken")){
+                    else if(item2.equals("Barbecue Chicken  ")){
                         cost2=250.0;
                     }
-                    else if(item2.equals("Chicken Dominator")){
+                    else if(item2.equals("Chicken Dominator ")){
                         cost2=300.0;
                     }
-                    else if(item2.equals("Chicken Maximus")){
+                    else if(item2.equals("Chicken Maximus   ")){
                         cost2=350.0;
                     }
+                    fooditem[counter] = item2;
+                    costing[counter] = cost2;
+                    quantity[counter] = qty2;
+                    counter++;
                 }
 
                 String item3=(String)comboBox_3.getSelectedItem();
@@ -568,27 +692,31 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty3=Integer.parseInt(textField_6.getText());
-                    if(item3.equals("Veggie Pasta")){
+                    if(item3.equals("Veggie Pasta      ")){
                         cost3=150.0;
                     }
-                    else if(item3.equals("Brown Pasta")){
+                    else if(item3.equals("Brown Pasta       ")){
                         cost3=150.0;
                     }
-                    else if(item3.equals("Spicy Arabiatta")){
+                    else if(item3.equals("Spicy Arabiatta   ")){
                         cost3=160.0;
                     }
-                    else if(item3.equals("White Sauce Pasta")){
+                    else if(item3.equals("White Sauce Pasta ")){
                         cost3 = 200.0;
                     }
-                    else if(item3.equals("Chicken Sausage Pasta")){
+                    else if(item3.equals("Chicken Sausage Pa")){
                         cost3=250.0;
                     }
-                    else if(item3.equals("Mexican Pasta")){
+                    else if(item3.equals("Mexican Pasta     ")){
                         cost3=300.0;
                     }
-                    else if(item3.equals("Chicken Alfredo Pasta")){
+                    else if(item3.equals("Chicken Alfredo Pas")){
                         cost3=350.0;
                     }
+                    fooditem[counter] = item3;
+                    costing[counter] = cost3;
+                    quantity[counter] = qty3;
+                    counter++;
                 }
                 String item4=(String)comboBox_4.getSelectedItem();
 
@@ -599,33 +727,34 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty4=Integer.parseInt(textField_7.getText());
-                    if(item4.equals("Tomato & Cheese Sandwich")){
+                    if(item4.equals("Cheese Sandwich   ")){
                         cost4=70.0;
                     }
-                    else if(item4.equals("Club Sandwich")){
+                    else if(item4.equals("Club Sandwich     ")){
                         cost4=80.0;
                     }
-                    else if(item4.equals("Corn Cheese Sandwich")){
+                    else if(item4.equals("Corn Cheese Sandwi")){
                         cost4=100.0;
                     }
-                    else if(item4.equals("Chicken Sandwich")){
+                    else if(item4.equals("Chicken Sandwich  ")){
                         cost4 = 120.0;
                     }
-                    else if(item4.equals("Mutton Sandwich")){
+                    else if(item4.equals("Mutton Sandwich   ")){
                         cost4=130.0;
                     }
-                    else if(item4.equals("Ham Sabdwich")){
+                    else if(item4.equals("Ham Sandwich      ")){
                         cost4=150.0;
                     }
-                    else if(item4.equals("Grillen Chicken Panini")){
+                    else if(item4.equals("Grilled Chicken Pa")){
                         cost4=200.0;
                     }
-                    else if(item4.equals("Bacon Panini")){
+                    else if(item4.equals("Bacon Panini      ")){
                         cost4=230.0;
                     }
-                    else if(item4.equals("Chicken Salami Sandwich")){
-                        cost4=250.0;
-                    }
+                    fooditem[counter] = item4;
+                    costing[counter] = cost4;
+                    quantity[counter] = qty4;
+                    counter++;
                 }
 
                 String item5=(String)comboBox_5.getSelectedItem();
@@ -637,21 +766,25 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty5=Integer.parseInt(textField_8.getText());
-                    if(item5.equals("Chicken Biriyani")){
+                    if(item5.equals("Chicken Biriyani  ")){
                         cost5=200.0;
                     }
-                    else if(item5.equals("Chicken Special Biriyani")){
+                    else if(item5.equals("Chicken Spl Biriya")){
                         cost5=250.0;
                     }
-                    else if(item5.equals("Mutton Biriyani")){
+                    else if(item5.equals("Mutton Biriyani   ")){
                         cost5=230.0;
                     }
-                    else if(item5.equals("Mutton Special Biriyani")){
+                    else if(item5.equals("Mutton Spl Biriyan")){
                         cost5 = 260.0;
                     }
-                    else if(item5.equals("Paneer Tikka Biriyani")){
+                    else if(item5.equals("Paneer Tikka Biriy")){
                         cost5=180.0;
                     }
+                    fooditem[counter] = item5;
+                    costing[counter] = cost5;
+                    quantity[counter] = qty5;
+                    counter++;
                 }
 
                 String item6=(String)comboBox_6.getSelectedItem();
@@ -663,33 +796,37 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty6=Integer.parseInt(textField_9.getText());
-                    if(item6.equals("Steamed Rice")){
+                    if(item6.equals("Steamed Rice      ")){
                         cost6=90.0;
                     }
-                    else if(item6.equals("Jeera Rice")){
+                    else if(item6.equals("Jeera Rice        ")){
                         cost6=150.0;
                     }
-                    else if(item6.equals("Kashmiri Pulao")){
+                    else if(item6.equals("Kashmiri Pulao    ")){
                         cost6=180.0;
                     }
-                    else if(item6.equals("Roti")){
+                    else if(item6.equals("Rotti             ")){
                         cost6 = 40.0;
                     }
-                    else if(item6.equals("Plain Naan")){
+                    else if(item6.equals("Plain Naan        ")){
                         cost6=120.0;
                     }
-                    else if(item6.equals("Butter Naan")){
+                    else if(item6.equals("Butter Naan       ")){
                         cost6=130.0;
                     }
-                    else if(item6.equals("Laccha Paratha")){
+                    else if(item6.equals("Laccha Paratha    ")){
                         cost6=140.0;
                     }
-                    else if(item6.equals("Masala Kulcha")){
+                    else if(item6.equals("Masala Kulcha     ")){
                         cost6=150.0;
                     }
-                    else if(item6.equals("Amritsari Kulcha")){
+                    else if(item6.equals("Amritsari Kulcha ")){
                         cost6=180.0;
                     }
+                    fooditem[counter] = item6;
+                    costing[counter] = cost6;
+                    quantity[counter] = qty6;
+                    counter++;
                 }
 
                 String item7=(String)comboBox_7.getSelectedItem();
@@ -701,36 +838,40 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty7=Integer.parseInt(textField_10.getText());
-                    if(item7.equals("Chilli Paneer")){
+                    if(item7.equals("Chilli Paneer     ")){
                         cost7=150.0;
                     }
-                    else if(item6.equals("Shahi Paneer")){
+                    else if(item6.equals("Shahi Paneer      ")){
                         cost7=180.0;
                     }
-                    else if(item7.equals("Paneer Butter Masala")){
+                    else if(item7.equals("Paneer Butter Masa")){
                         cost7=180.0;
                     }
-                    else if(item7.equals("Chilli Chichen")){
+                    else if(item7.equals("Chilli Chichen     ")){
                         cost7 = 200.0;
                     }
                     else if(item7.equals("Chicken Manchurian")){
                         cost7=210.0;
                     }
-                    else if(item7.equals("Butter Chicken")){
+                    else if(item7.equals("Butter Chicken     ")){
                         cost7=230.0;
                     }
-                    else if(item7.equals("Chichen Tikka Masala")){
+                    else if(item7.equals("Chichen Tikka Masal")){
                         cost7=250.0;
                     }
-                    else if(item7.equals("Mutton Kasha")){
+                    else if(item7.equals("Mutton Kasha       ")){
                         cost7=280.0;
                     }
-                    else if(item7.equals("Mutton Dopiaza")) {
+                    else if(item7.equals("Mutton Dopiaza     ")) {
                         cost7=300.0;
                     }
-                    else if(item7.equals("Mutton Dakbunglow")){
+                    else if(item7.equals("Mutton Dakbunglow  ")){
                         cost7=320.0;
                     }
+                    fooditem[counter] = item7;
+                    costing[counter] = cost7;
+                    quantity[counter] = qty7;
+                    counter++;
                 }
 
                 String item8=(String)comboBox_7_1.getSelectedItem();
@@ -742,24 +883,28 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty8=Integer.parseInt(textField_11.getText());
-                    if(item8.equals("Sizzling Brownie")){
+                    if(item8.equals("Sizzling Brownie  ")){
                         cost8=150.0;
                     }
-                    else if(item8.equals("Wonder Waffle")){
+                    else if(item8.equals("Wonder Waffle     ")){
                         cost8=180.0;
                     }
-                    else if(item8.equals("Chocolate Pudding")){
+                    else if(item8.equals("Chocolate Pudding ")){
                         cost8=180.0;
                     }
-                    else if(item8.equals("Caramel Pudding")){
+                    else if(item8.equals("Caramel Pudding   ")){
                         cost8 = 200.0;
                     }
-                    else if(item8.equals("Ecstasy Sundae")){
+                    else if(item8.equals("Ecstasy Sundae    ")){
                         cost8=210.0;
                     }
-                    else if(item8.equals("Chocolate Mouse")){
+                    else if(item8.equals("Chocolate Mouse   ")){
                         cost8=230.0;
                     }
+                    fooditem[counter] = item8;
+                    costing[counter] = cost8;
+                    quantity[counter] = qty8;
+                    counter++;
                 }
 
                 //CODE FOR DRINKS-----------
@@ -774,33 +919,37 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty9=Integer.parseInt(textField_12.getText());
-                    if(item9.equals("Espresso")){
+                    if(item9.equals("Espresso          ")){
                         cost9=100.0;
                     }
-                    else if(item9.equals("Americano")){
+                    else if(item9.equals("Americano         ")){
                         cost9=120.0;
                     }
-                    else if(item9.equals("Latte")){
+                    else if(item9.equals("Latte             ")){
                         cost9=140.0;
                     }
-                    else if(item9.equals("Cupaccino")){
+                    else if(item9.equals("Cupaccino         ")){
                         cost9=155.0;
                     }
-                    else if(item9.equals("Irish Coffee")){
+                    else if(item9.equals("Irish Coffee      ")){
                         cost9=165.0;
                     }
-                    else if(item9.equals("Dalgona")){
+                    else if(item9.equals("Dalgona           ")){
                         cost9=175.0;
                     }
-                    else if(item9.equals("Freddo")){
+                    else if(item9.equals("Freddo            ")){
                         cost9=180.0;
                     }
-                    else if(item9.equals("Affogato")){
+                    else if(item9.equals("Affogato          ")){
                         cost9=185.0;
                     }
-                    else if(item9.equals("Mocha")){
+                    else if(item9.equals("Mocha             ")){
                         cost9=200.0;
                     }
+                    fooditem[counter] = item9;
+                    costing[counter] = cost9;
+                    quantity[counter] = qty9;
+                    counter++;
                 }
 
                 String item10=(String)comboBox_8_1.getSelectedItem();
@@ -812,15 +961,19 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty10=Integer.parseInt(textField_13.getText());
-                    if(item10.equals("Green Tea")){
+                    if(item10.equals("Green Tea         ")){
                         cost10=50.0;
                     }
-                    else if(item10.equals("Black Tea")){
+                    else if(item10.equals("Black Tea         ")){
                         cost10=55.0;
                     }
-                    else if(item10.equals("Ice Tea")){
+                    else if(item10.equals("Ice Tea           ")){
                         cost10=60.0;
                     }
+                    fooditem[counter] = item10;
+                    costing[counter] = cost10;
+                    quantity[counter] = qty10;
+                    counter++;
                 }
 
                 String item11=(String)comboBox_8_2.getSelectedItem();;
@@ -835,18 +988,19 @@ public class homePanel extends JPanel {
                     if(item11.equals("Chocolate Milkshake")){
                         cost11=90.0;
                     }
-                    else if(item11.equals("Banana Milkshake")){
+                    else if(item11.equals("Banana Milkshake   ")){
                         cost11=90.0;
                     }
-                    else if(item11.equals("Strawberry Milkshake")){
+                    else if(item11.equals("Strawberry Milkshak")){
                         cost11=90.0;
                     }
-                    else if(item11.equals("Banana Milkshake")){
+                    else if(item11.equals("Mango Milkshake    ")){
                         cost11= 90.0;
                     }
-                    else if(item11.equals("Mango Milkshake")){
-                        cost11= 90.0;
-                    }
+                    fooditem[counter] = item11;
+                    costing[counter] = cost11;
+                    quantity[counter] = qty11;
+                    counter++;
                 }
 
                 String item12=(String)comboBox_8_3.getSelectedItem();;
@@ -858,21 +1012,25 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty12=Integer.parseInt(textField_15.getText());
-                    if(item12.equals("Mineral Water")){
+                    if(item12.equals("Mineral Water     ")){
                         cost12=60.0;
                     }
-                    else if(item12.equals("Aerated Soft Drinks")){
+                    else if(item12.equals("Aerated Soft Drink")){
                         cost12=90.0;
                     }
-                    else if(item12.equals("Fresh Lime")){
+                    else if(item12.equals("Fresh Lime        ")){
                         cost12=60.0;
                     }
-                    else if(item12.equals("Ginger Ale")){
+                    else if(item12.equals("Ginger Ale        ")){
                         cost12= 100.0;
                     }
-                    else if(item12.equals("Red Bull")){
+                    else if(item12.equals("Red Bull          ")){
                         cost12= 120.0;
                     }
+                    fooditem[counter] = item12;
+                    costing[counter] = cost12;
+                    quantity[counter] = qty12;
+                    counter++;
                 }
 
                 String item13=(String)comboBox_8_3_1.getSelectedItem();;
@@ -884,27 +1042,31 @@ public class homePanel extends JPanel {
                 }
                 else{
                     qty13=Integer.parseInt(textField_22.getText());
-                    if(item13.equals("Virgin Mojito")){
+                    if(item13.equals("Virgin Mojito     ")){
                         cost13=100.0;
                     }
-                    else if(item13.equals("Watermelon Mojito")){
+                    else if(item13.equals("Watermelon Mojito ")){
                         cost13=120.0;
                     }
-                    else if(item13.equals("Blue Lagoon")){
+                    else if(item13.equals("Blue Lagoon       ")){
                         cost13=150.0;
                     }
-                    else if(item13.equals("Margarita")){
+                    else if(item13.equals("Margarita         ")){
                         cost13=170.0;
                     }
-                    else if(item13.equals("Pina Colada")){
+                    else if(item13.equals("Pina Colada       ")){
                         cost13=180.0;
                     }
-                    else if(item13.equals("Purple Rain")){
+                    else if(item13.equals("Purple Rain       ")){
                         cost13= 190.0;
                     }
-                    else if(item13.equals("Delight Punch")){
+                    else if(item13.equals("Delight Punch     ")){
                         cost13=200.0;
                     }
+                    fooditem[counter] = item13;
+                    costing[counter] = cost13;
+                    quantity[counter] = qty13;
+                    counter++;
                 }
 
 
@@ -1002,36 +1164,6 @@ public class homePanel extends JPanel {
         contentPane.add(btnNewButton_3);
 
         JButton btnNewButton_4 = new JButton("Generate Receipt & Display");
-		/*btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String Name=(String)textField.getText();
-		        int Num=Integer.parseInt(""+textField_1.getText());
-		        String Add=(String)textField_2.getText();
-		        double com=Double.parseDouble(""+textField_16.getText());
-		        double cod=Double.parseDouble(""+textField_17.getText());
-		        double delivery=Double.parseDouble(""+textField_18.getText());
-		        double tax=Double.parseDouble(""+textField_19.getText());
-		        double totalamt=Double.parseDouble(""+textField_20.getText());
-		        textArea.append("-----------------------RECIEPT---------------------------\n");
-		        textArea.append("Name Of The Customer: " +Name+"\n");
-		        textArea.append("\n");
-		        textArea.append("Phone Number: "+Num+"\n");
-		        textArea.append("\n");
-		        textArea.append("Address Of The Customer: " +Add+"\n");
-		        textArea.append("\n");
-		        textArea.append("Cost Of Meal: " +com+"\n");
-		        textArea.append("\n");
-		        textArea.append("Cost Of Drinks: "+cod+"\n");
-		        textArea.append("\n");
-		        textArea.append("Cost Of Delivery: " +delivery+"\n");
-		        textArea.append("\n");
-		        textArea.append("Tax(SGST+CGST): " +tax+"\n");
-		        textArea.append("\n");
-		        textArea.append("Total Amount: " +totalamt+"\n");
-		        textArea.append("\n");
-		        textArea.append("-----------------------RECIEPT---------------------------");
-			}
-		});*/
 
         btnNewButton_4.setFont(new Font("Times New Roman", Font.BOLD, 18));
         btnNewButton_4.setBounds(309, 566, 305, 46);
@@ -1059,9 +1191,6 @@ public class homePanel extends JPanel {
         lblNewLabel_13.setBounds(1028, 102, 109, 26);
         contentPane.add(lblNewLabel_13);
 
-		/*JTextArea textArea = new JTextArea();
-		textArea.setBounds(903, 139, 326, 495);
-		contentPane.add(textArea);*/
 
         JLabel lblNewLabel_14 = new JLabel("Bill No:");
         lblNewLabel_14.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -1108,13 +1237,47 @@ public class homePanel extends JPanel {
         textField_23.setText(java.time.LocalDate.now().toString());
         textField_23.setEditable(false);
 
-
+        // Right side Bill space initial Text
         String finalStr = str;
+        textArea.setText(String.format("\n" +
+                        "                   INVOICE \n " +
+                        " ========================================== \n " +
+                        "   Bill No. :  %d \n" +
+                        "    Date    :  %s \n" +
+                        "    Name    :  %s \n" +
+                        "    Phone   :  %s \n" +
+                        "    Address :  N/A\n" +
+                        " ========================================== \n " +
+                        " Food item\t\tQty    Rate\t         Amount \n " +
+                        " --------------------------------------------------------------------------- \n ",
+                        Integer.parseInt(finalStr), java.time.LocalDate.now().toString(), textField.getText(), textField_1.getText()));
+
         btnNewButton_4.addActionListener(new ActionListener() {
+            // Action performed after pressing "Generate Receipt & Display" Button
             @Override
             public void actionPerformed(ActionEvent e) {
-                storeData strDt = new storeData(finalStr,textField.getText(),textField_1.getText(),textField_2.getText(),textField_19.getText(),textField_20.getText());
+                Double total = Double.parseDouble(textField_16.getText()) + Double.parseDouble(textField_17.getText()) + Double.parseDouble(textField_18.getText());
+                try {
+
+                    // Calling the storeDataCloud Class for storing the data into cloud
+                    storeDataCloud strDtCloud = new storeDataCloud(Integer.parseInt(finalStr), textField.getText(), textField_1.getText(), total, Double.parseDouble(textField_19.getText()),Double.parseDouble(textField_20.getText()), connection, id, NOB);
+
+                    // Calling the storeDataLocal Class for storing the data into local MySQL
+                    storeDataLocal strDtLocal = new storeDataLocal(Integer.parseInt(finalStr), textField.getText(), textField_1.getText(), total, Double.parseDouble(textField_19.getText()),Double.parseDouble(textField_20.getText()), id);
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                try {
+
+                    // Calling the receipt Class for creating the bill invoice.
+                    receipt rcpt = new receipt(textArea, Integer.parseInt(finalStr), textField.getText(), textField_1.getText(), fooditem, costing, quantity, total, Double.parseDouble(textField_19.getText()),Double.parseDouble(textField_20.getText()));
+                } catch (PrinterException ex) {
+                    ex.printStackTrace();
+                }
             }
+
         });
 
 
